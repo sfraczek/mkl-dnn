@@ -185,8 +185,8 @@ void simple_net_int8() {
         net.push_back(
                 reorder(dst_reorder_pd, conv_dst_memory, user_dst_memory));
     }
-
-    stream(stream::kind::eager).submit(net).wait();
+    for (int i = 0; i < 10000; i++)
+        stream(stream::kind::eager).submit(net).wait();
 
 }
 
